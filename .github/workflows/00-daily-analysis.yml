@@ -1,6 +1,6 @@
 name: 每日股票分析
 
-于:
+on:
   # 定时触发 - 每天北京时间 18:00 (UTC 10:00)
   schedule:
     - cron: '0 0 * * 1-5'     # 周一到周五，UTC 10:00 = 北京时间 18:00
@@ -11,8 +11,8 @@ name: 每日股票分析
       mode:
         description: '运行模式'
         required: true
-        默认: 'full'
-        输入: choice
+        default: 'full'
+        type: choice
         options:
           - full          # 完整分析（股票+大盘）
           - market-only   # 仅大盘复盘
@@ -20,8 +20,8 @@ name: 每日股票分析
       force_run:
         description: '强制运行（跳过交易日检查）'
         required: false
-        默认: false
-        输入: boolean
+        default: false
+        type: boolean
 
 # 并发控制：同一时间只运行一个分析任务
 concurrency:
